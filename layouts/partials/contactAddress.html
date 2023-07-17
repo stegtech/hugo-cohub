@@ -4,8 +4,12 @@
     <div class="row no-gutters">
       <div class="col-lg-6">
         {{ $map := .Site.Params.map }}
-        <div id="map" data-lat={{ $map.latitude }} data-long={{ $map.longitude }} data-pin={{ $map.pinImage | absURL }}>
-        </div>
+        {{if $map.latitude}}
+          <div id="map" data-lat={{ $map.latitude }} data-long={{ $map.longitude }} data-pin={{ $map.pinImage | absURL }}>
+          </div>
+        {{else}}
+        <iframe src="{{$map.iframeEmbedUrl}}" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        {{end}}
       </div>
       <div class="col-lg-6">
         <div class="contact-aria">
