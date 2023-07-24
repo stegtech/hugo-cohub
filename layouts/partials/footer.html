@@ -47,7 +47,7 @@
 
 
 {{ "<!-- Non Critical CSS -->" | safeHTML }}
-{{$style :=  resources.Get "scss/non-critical.scss" | resources.ToCSS | resources.Minify }}
+{{$style :=  resources.Get "scss/non-critical.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link href="{{ $style.Permalink }}" rel="stylesheet" />
 {{if .Site.Params.Map.APIKey }}
 <script src="https://maps.googleapis.com/maps/api/js?key={{ .Site.Params.Map.APIkey }}&libraries=geometry">
@@ -63,5 +63,5 @@
 <script src="{{"vendor/g-map/gmap.js" | absURL}}"></script>
 <!-- {{ $formhandler := resources.Get "js/formhandler.js" | minify}} 
 <script src="{{ $formhandler.Permalink}}"></script> -->
-{{ $script := resources.Get "js/script.js" | minify}} 
+{{ $script := resources.Get "js/script.js" | minify | fingerprint }} 
 <script src="{{ $script.Permalink}}"></script>
