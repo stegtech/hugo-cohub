@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-6 col-md-12">
         <div class="footer-logo">
-          <img src="{{ .Site.Params.footerlogo | absURL}}" alt="logo">
+          <img class="img-fluid" src="{{ .Site.Params.footerlogo | absURL}}" alt="logo">
         </div>
         <p class="footer-description">
           {{ .Site.Params.footerDescription}}
@@ -19,14 +19,20 @@
         <div class="footer-icon">
           <ul>
             {{ range $socialIcon }}
-						<li >
+            <li>
               <a target="_blank" href="{{ .url }}">
                 <i
-									class="{{ .icon }}">
+                  class="{{ .icon }}">
                 </i>
               </a>
-						</li>
-						{{ end }}
+            </li>
+            {{ end }}
+            {{ with .Site.Params.address.email }}
+            <li><a target="_blank" href="mailto:{{ . }}"><i class="ti-email"></i></a></li>
+            {{ end }}
+            {{ with .Site.Params.address.phone }}
+            <li><a target="_blank" href="tel:{{ . }}"><i class="ti-mobile"></i></a></li>
+            {{ end }}
           </ul>
         </div>
         <div class="footer-copyright-text">
@@ -34,10 +40,10 @@
           <ul>
             {{ $sitemap := .Site.Menus.sitemap }}
 						{{ range $sitemap }}
-						  <li >
-                <a  href="{{ .URL | absURL }}">{{ .Name }}</a>
+						  <li>
+                <a href="{{ .URL | absURL }}">{{ .Name }}</a>
               </li>
-						{{ end }}
+            {{ end }}
           </ul>
         </div>
       </div>

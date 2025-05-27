@@ -9,8 +9,7 @@
             <p>
               {{.subtitle}}
             </p>
-
-            {{if .enableVideo}}
+            {{ if .heroVideo }}
             <div class="hero-video-player">
               <div class="hero-video-player-icon">
                 <a class="popup-vimeo" href="{{ .heroVideo }}">
@@ -19,7 +18,7 @@
               </div>
               {{ .herosVideoDesc | safeHTML }}
             </div>
-            {{end}}
+            {{ end }}
           </div>
         </div>
       </div>
