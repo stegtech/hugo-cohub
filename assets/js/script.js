@@ -37,9 +37,9 @@ $(document).ready(function () {
   });
 
   // Service Item Match Height
-  $(".service-item").matchHeight({
-    byRow: 0,
-  });
+  // $(".service-item").matchHeight({
+  //   byRow: 0,
+  // });
 
   // .blog-content Match Height
   $(".blog-content").matchHeight({
