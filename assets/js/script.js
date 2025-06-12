@@ -362,3 +362,26 @@ $(window).on("scroll", function () {
    google.maps.event.addDomListener(window, "load", initialize);
  }
  
+
+function decode(a) {
+  return a.replace(/[a-zA-Z]/g, function(c){
+    return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) 
+                              ? c : c - 26);
+  })
+};
+
+function replaceMl(jqLink) {
+  var x = jqLink.attr('data-l').replaceAll('_', '@').replaceAll('X', '.').replaceAll('Y', 'pb').replaceAll('Q', 'hx');
+  var y = decode(x);
+  var z = 'lto:' + y;
+  jqLink.attr('href', 'mai' + z);
+}
+
+$('#contactUsLink').on('click', function (event) {
+  replaceMl($(this));
+});
+
+$('#contact-us').on('mouseover', function (event) {
+  replaceMl($('#contactUsLink'));
+});
+
